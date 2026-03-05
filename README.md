@@ -23,7 +23,7 @@ This script removes that. You click a link, you go directly there. No spy redire
 |---|---|---|
 | Links in tweets | `http://example.com` | ✅ Fixed |
 | Profile bio URLs | `example.com` | ✅ Fixed |
-| DNS-blocked `t.co` | Links opening `about:` page | ✅ Fixed |
+| DNS-blocked `t.co` | Links opening `about` page | ✅ Fixed |
 
 ---
 
