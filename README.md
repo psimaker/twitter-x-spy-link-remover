@@ -11,7 +11,7 @@ This script removes that. You click a link, you go directly there. No spy redire
 ## Install
 
 1. Install [Tampermonkey](https://www.tampermonkey.net/) for your browser
-2. Click **[➕ Install Script](https://github.com/YOUR_USERNAME/twitter-x-spy-link-remover/raw/main/twitter-x-spy-link-remover.user.js)**
+2. Click **[➕ Install Script](https://github.com/psimaker/twitter-x-spy-link-remover/raw/main/twitter-x-spy-link-remover.user.js)**
 3. Confirm in Tampermonkey
 4. Reload Twitter/X — done
 
