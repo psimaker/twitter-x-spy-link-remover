@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Twitter/X Spy Link Remover
 // @namespace    https://github.com/psimaker/twitter-x-spy-link-remover
-// @version      3.0.0
+// @version      3.1.0
 // @description  Stops Twitter/X from tracking your clicks. Bypasses t.co spy URLs and opens the real link directly — no redirects, no logging.
 // @author       psimaker
 // @license      MIT
@@ -17,23 +17,28 @@
   'use strict';
 
   function getRealUrl(anchor) {
-    const text = anchor.textContent.trim();
-    if (!text || text.includes('…')) return null;
-
-    // Profile bio URLs (data-testid="UserUrl") → text has no protocol prefix
+    // Bio-Links (data-testid="UserUrl") → kein Protokoll im Text
     if (anchor.dataset.testid === 'UserUrl') {
-      return text.startsWith('http') ? text : 'https://' + text;
+      const text = anchor.textContent.trim();
+      return text ? (text.startsWith('http') ? text : 'https://' + text) : null;
     }
 
-    // Tweet inline links → full URL is rendered as visible text
-    if (text.startsWith('http') && !text.includes('t.co')) {
-      return text;
+    // Tweet-Links: URL aus dem DOM zusammenbauen,
+    // dabei den reinen "…"-Span überspringen
+    let url = '';
+    anchor.childNodes.forEach(node => {
+      const t = node.textContent;
+      if (t && t.trim() !== '…') url += t;
+    });
+    url = url.trim();
+
+    if (url.startsWith('http') && !url.includes('t.co')) {
+      return url;
     }
 
     return null;
   }
 
-  // Use capture phase to intercept before Twitter's own click handlers
   document.addEventListener('click', function (e) {
     const anchor = e.target.closest('a[href*="t.co"]');
     if (!anchor) return;
