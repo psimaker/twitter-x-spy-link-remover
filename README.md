@@ -11,9 +11,11 @@ This script removes that. You click a link, you go directly there. No spy redire
 ## Install
 
 1. Install [Tampermonkey](https://www.tampermonkey.net/) for your browser
-2. Click **[➕ Install Script](https://github.com/psimaker/twitter-x-spy-link-remover/raw/main/twitter-x-spy-link-remover.user.js)**
+2. Click **[➕ Install from Greasy Fork](https://greasyfork.org/scripts/568483-twitter-x-spy-link-remover)** *(recommended — automatic updates)*
 3. Confirm in Tampermonkey
 4. Reload Twitter/X — done
+
+> Also available directly from GitHub: [twitter-x-spy-link-remover.user.js](https://github.com/psimaker/twitter-x-spy-link-remover/raw/main/twitter-x-spy-link-remover.user.js)
 
 ---
 
@@ -23,7 +25,8 @@ This script removes that. You click a link, you go directly there. No spy redire
 |---|---|---|
 | Links in tweets | `http://example.com` | ✅ Fixed |
 | Profile bio URLs | `example.com` | ✅ Fixed |
-| DNS-blocked `t.co` | Links opening `about` page | ✅ Fixed |
+| DNS-blocked `t.co` | Links opening `about:` page | ✅ Fixed |
+| Long truncated URLs | Ethereum TX hashes, etc. | ✅ Fixed |
 
 ---
 
@@ -49,8 +52,7 @@ Works especially well combined with **DNS-level `t.co` blocking** (Pi-hole, rout
 
 ## Limitations
 
-- Links that Twitter truncates with `…` cannot be resolved — the full URL isn't in the DOM
-- May need an update if Twitter changes their DOM structure significantly
+- May need an update if Twitter changes their DOM structure significantly — open an issue if that happens
 
 ---
 
